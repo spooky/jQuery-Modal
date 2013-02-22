@@ -41,20 +41,6 @@
 
         this.doc = $(document);
 
-        this.wrapper = $('<div class="modal-wrapper">').css({
-            position: this.opts.fixed ? 'fixed' : 'absolute',
-            width: this.opts.width,
-            maxWidth: this.opts.maxWidth,
-            height: this.opts.height,
-            maxHeight: this.opts.maxHeight,
-            display: 'none'
-        });
-
-        this.close = $('<span class="modal-close" data-' + this.opts.namespace + '-close>Close</span>').appendTo(this.wrapper);
-        this.content = $('<div class="modal-content">').appendTo(this.wrapper);
-
-        this.wrapper.appendTo(this.target);
-
         // Define overlay to prevent errors
         this.overlay = false;
 
@@ -69,6 +55,20 @@
                 })
                 .appendTo(this.target);
         }
+
+        this.wrapper = $('<div class="modal-wrapper">').css({
+            position: this.opts.fixed ? 'fixed' : 'absolute',
+            width: this.opts.width,
+            maxWidth: this.opts.maxWidth,
+            height: this.opts.height,
+            maxHeight: this.opts.maxHeight,
+            display: 'none'
+        });
+
+        this.close = $('<span class="modal-close" data-' + this.opts.namespace + '-close>Close</span>').appendTo(this.wrapper);
+        this.content = $('<div class="modal-content">').appendTo(this.wrapper);
+
+        this.wrapper.appendTo(this.target);
 
         // Context appropriate metrics and events
         this.isBody = (this.target === document.body);
